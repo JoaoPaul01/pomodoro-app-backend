@@ -1,17 +1,17 @@
 import { Router } from "express";
-import { createTaskController } from "./controllers/task/createTaskController";
-import { findAllTasksController } from "./controllers/task/findAllTasksController";
-import { CreateUserController } from "./controllers/user/CreateUserController";
+import { UserController } from "./controllers/UserControlller";
+import { TaskController } from "./controllers/TaskController";
 
 const router = Router();
 
-const createTask = new createTaskController();
-const findTasks = new findAllTasksController();
-const createUser = new CreateUserController();
+const task = new TaskController();
+const user = new UserController();
 
-router.post('/task', createTask.handle);
-router.get('/tasks-list', findTasks.handle);
+router.post('/task', task.createTask);
+router.get('/tasks-list', task.findAllTasks);
 
-router.post('/register', createUser.handle)
+router.post('/register', user.register)
+router.post('/login')
 
 export { router };
+
