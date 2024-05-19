@@ -23,8 +23,7 @@ model User {
 model Task {
   id Int  @id @default(autoincrement())
   name String
+  description String
   turn Int
   status Boolean
-
-  @@map("tasks")
 }
