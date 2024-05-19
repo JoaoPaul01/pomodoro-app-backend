@@ -4,8 +4,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node build/server.js --omit=dev",
-    "build": "tsc --project tsconfig.json --omit=dev"
+    "start": "node build/server.js",
+    "build": "tsc --project tsconfig.json"
   },
   "keywords": [],
   "author": "",
