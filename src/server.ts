@@ -5,7 +5,7 @@ import { router } from './routes';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocs from './swagger.json';
 
-const port = 3000;
+const port = 8000;
 const app = express();
 
 app.use(express.json());
@@ -20,4 +20,4 @@ app.use('/terms', (request, response) => {
 
 app.use('/v1', router)
 
-app.listen(port, () => console.log(`Servidor inicializado em http://localhost:${port}`));
+app.listen(port, () => console.log(`Server initialized on port ${port}`));
