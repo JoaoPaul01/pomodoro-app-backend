@@ -20,4 +20,8 @@ app.use('/terms', (request, response) => {
 
 app.use('/v1', router)
 
+app.get('/', (req, res) => {
+    res.redirect('/api-docs');
+});
+
 app.listen(port, () => console.log(`Server initialized on port ${port}`));
