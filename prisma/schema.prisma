@@ -6,9 +6,25 @@
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id String @id @default(uuid())
+  email String @unique
+  password String 
+}
+
+model Task {
+  id Int  @id @default(autoincrement())
+  name String
+  turn Int
+  status Boolean
+
+  @@map("tasks")
 }
