@@ -1,0 +1,188 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "pomodoro API",
+        "description": "",
+        "termsOfService": "http://localhost:3000/terms",
+        "contact": {
+            "email": "joao.06.paulo9@gmail.com" 
+        }
+    },
+    "version": "1.0.0",
+    "servers": [
+        {
+            "url": "http://localhost:3000/v1",
+            "description": "API"
+        }
+    ],
+    "paths": {
+        "/tasks-list": {
+            "get": {
+                "summary": "Tasks list",
+                "description": "Return all tasks",
+                "tags": ["Tasks"],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Task"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task": {
+            "post": {
+                "summary": "Create task",
+                "description": "Create a new task",
+                "tags": ["Tasks"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Task"
+                            },
+                            "examples": {
+                                "task": {
+                                    "value": {
+                                        "name": "Activity 1",
+                                        "description": "Do activity 1",
+                                        "turn": 3
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Task"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task/{id}": {
+            "patch": {
+                "summary": "update task",
+                "description": "Update a exists task",
+                "tags": ["Tasks"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Task id",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Task"
+                            },
+                            "examples": {
+                                "task": {
+                                    "value": {
+                                        "name": "Activity 1",
+                                        "description": "Do activity 1",
+                                        "turn": 3,
+                                        "status": true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Task"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Task does not exist"
+                    }
+                }
+            }
+        },
+        "/delete-task/{id}": {
+            "delete": {
+                "summary": "Delete task",
+                "description": "Delete a exists task",
+                "tags": ["Tasks"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Task id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Task"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Task does not exist"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Task": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "turn": {
+                        "type": "number"
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
