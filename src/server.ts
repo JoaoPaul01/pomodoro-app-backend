@@ -26,7 +26,7 @@ app.use('/terms', (request, response) => {
     });
 })
 
-app.use('/v1', router)
+app.use('/v1', cors(), router)
 
 app.get('/', (req, res) => {
     res.redirect('/api-docs');
