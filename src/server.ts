@@ -12,8 +12,10 @@ const app = express();
 
 app.use(express.json());
 
+const allowedOrigins = ['https://pomodoro-app-theta-ten.vercel.app'];
+
 app.use(cors({
-    origin: '*'
+    origin: allowedOrigins
 }));
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
