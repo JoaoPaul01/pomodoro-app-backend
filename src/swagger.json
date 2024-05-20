@@ -3,7 +3,7 @@
     "info": {
         "title": "pomodoro API",
         "description": "",
-        "termsOfService": "http://localhost:3000/terms",
+        "termsOfService": "https://pomodoro-app-backend-production.up.railway.app/terms",
         "contact": {
             "email": "joao.06.paulo9@gmail.com" 
         }
@@ -11,7 +11,7 @@
     "version": "1.0.0",
     "servers": [
         {
-            "url": "http://localhost:3000/v1",
+            "url": "https://pomodoro-app-backend-production.up.railway.app/v1",
             "description": "API"
         }
     ],
