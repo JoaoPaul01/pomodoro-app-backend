@@ -5,6 +5,8 @@ import { router } from './routes';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocs from './swagger.json';
 
+import { cors } from 'cors';
+
 const port = process.env.PORT || 8000;
 const app = express();  
 
@@ -19,6 +21,21 @@ app.use('/terms', (request, response) => {
 })
 
 app.use('/v1', router)
+
+const corsOpts = {
+    origin: '*',
+  
+    methods: [
+      'GET',
+      'POST',
+    ],
+  
+    allowedHeaders: [
+      'Content-Type',
+    ],
+};
+  
+app.use(cors(corsOpts));
 
 app.get('/', (req, res) => {
     res.redirect('/api-docs');
