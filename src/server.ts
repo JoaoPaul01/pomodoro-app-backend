@@ -27,7 +27,10 @@ app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "https://pomodoro-6epv8ql6j-joaos-projects-a243f803.vercel.app:8000");
     res.header("Access-Control-Allow-Methods", "GET,OPTIONS,PATCH,DELETE,POST,PUT");
     res.header("Access-Control-Allow-Headers", "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization");
-    app.use(cors());
+    app.use(cors({
+        origin: '*',
+        methods: ['GET', 'OPTIONS', 'POST', 'DELETE', 'PUT', 'PATCH']
+    }));
     next();
 });
 
