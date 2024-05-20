@@ -30,4 +30,10 @@ app.get('/', (req, res) => {
     res.redirect('/api-docs');
 });
 
+app.options('/task', cors(), (req, res) => {
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.status(204).end();
+});
+
 app.listen(port, () => console.log(`Server initialized on port ${port}`));
