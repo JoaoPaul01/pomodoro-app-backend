@@ -26,7 +26,7 @@ export class TaskController {
         const { id } = request.params;
         const { name, description, turn, status } = request.body;
 
-        const taskExists = await prismaClient.user.findFirst({ where: {id} })
+        const taskExists = await prismaClient.task.findFirst({ where: {id: Number(id)} })
 
         if(!taskExists) {
             return response.status(400).json({ status: 400, message: 'Task does not exists.' })
@@ -49,7 +49,7 @@ export class TaskController {
     async deleteTask(request: Request, response: Response) {
         const { id } = request.params;
 
-        const taskExists = await prismaClient.user.findFirst({ where: {id} })
+        const taskExists = await prismaClient.task.findFirst({ where: {id: Number(id)} })
 
         if(!taskExists) {
             return response.status(400).json({ status: 400, message: 'Task does not exists.' })
