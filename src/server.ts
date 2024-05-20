@@ -12,16 +12,6 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
-
-app.use('/terms', (request, response) => {
-    return response.json({
-        message: 'Termos de uso' 
-    });
-})
-
-app.use('/v1', router)
-  
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Credentials", "true");
     res.header("Access-Control-Allow-Origin", "https://pomodoro-6epv8ql6j-joaos-projects-a243f803.vercel.app:8000");
@@ -33,6 +23,16 @@ app.use((req, res, next) => {
     }));
     next();
 });
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
+
+app.use('/terms', (request, response) => {
+    return response.json({
+        message: 'Termos de uso' 
+    });
+})
+
+app.use('/v1', router)
 
 app.get('/', (req, res) => {
     res.redirect('/api-docs');
