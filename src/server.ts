@@ -21,21 +21,12 @@ app.use('/terms', (request, response) => {
 })
 
 app.use('/v1', router)
-
-const corsOpts = {
-    origin: '*',
   
-    methods: [
-      'GET',
-      'POST',
-    ],
-  
-    allowedHeaders: [
-      'Content-Type',
-    ],
-};
-  
-app.use(cors(corsOpts));
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "https://pomodoro-6epv8ql6j-joaos-projects-a243f803.vercel.app:8000")
+    app.use(cors())
+    next();
+});
 
 app.get('/', (req, res) => {
     res.redirect('/api-docs');
