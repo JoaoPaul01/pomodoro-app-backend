@@ -10,7 +10,7 @@ export class TaskController {
     async createTask(request: Request, response: Response) {
         const { name, description ,turn } = request.body;
 
-        const task = await prismaClient.task.create({
+        await prismaClient.task.create({
             data: {
                 name,
                 description,
@@ -19,7 +19,8 @@ export class TaskController {
             }
         });
 
-        return response.json(task)
+        const tasks = await prismaClient.task.findMany();
+        return response.json(tasks);
     }
 
     async updateTask(request: Request, response: Response) {
